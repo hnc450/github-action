@@ -23,7 +23,7 @@ jobs:
           run: npm install
       # execution des builds
         - name : faire le build 
-          run: npm run build && mv build docs
+          run: npm run build && rm -rf docs && mv build docs
         - name: Git Auto Commit
           uses: stefanzweifel/git-auto-commit-action@v7.0.0
           with: 
