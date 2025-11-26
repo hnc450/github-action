@@ -1,0 +1,28 @@
+#  nom du workflows
+name: Deployement
+
+# evenement lors du workflow
+on:
+  push:
+    branches : [main]
+# le job a efffectué lors de l' action 
+jobs:
+  deploy:
+     #  environement sur lequel lancer le workflow
+     runs-on: ubuntu-latest
+     #  etape lors du deployement
+     steps:
+     # utiliser le code dans le repository
+        - name: Checkout
+          uses: actions/checkout@v6.0.0
+      # utiliser l environement de node 
+        - name: Setup Node.js environment
+          uses: actions/setup-node@v6.0.0
+      # installation des packages
+        - name: Installation des packages
+          run: npm install
+      # execution des builds
+        - name : faire le build 
+          run: npm run build && mv build docs
+        - name: Git Auto Commit
+          uses: stefanzweifel/git-auto-commit-action@v7.0.0
