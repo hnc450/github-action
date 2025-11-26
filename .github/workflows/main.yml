@@ -28,3 +28,5 @@ jobs:
           uses: stefanzweifel/git-auto-commit-action@v7.0.0
           with: 
              commit_message: Push du projet pour le test du workflow
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
