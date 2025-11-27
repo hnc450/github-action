@@ -26,8 +26,13 @@ jobs:
       # execution des builds
         - name : faire le build 
           run: npm run build && rm -rf docs && mv dist docs
+          # mise à jour automatique de la version du site
+        - name: Mise à jour de la version du site
+          run: echo "$((`cat version.txt` + 1))" > version.txt
+          # un commit automatique
         - name: Git Auto Commit
           uses: stefanzweifel/git-auto-commit-action@v7.0.0
+          
           with: 
              commit_message: Push du projet pour le test du workflow
           env:
